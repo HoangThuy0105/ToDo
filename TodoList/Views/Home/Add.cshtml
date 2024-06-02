@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Todo>
+
+
+<div class="row">
+    <div class="col-md-2">
+        <form action="Filter" method="post">
+            <div class="mb-3">
+                <label class="form-label">Category</label>
+                <select name="categoryFilter" class="form-select"
+                        asp-items="@(new SelectList(ViewBag.Categories, "CategoryId", "Name", ViewBag.Filters.CategoryId))">
+                    <option value="all">All</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Due Date: </label>
+                <select name="dueFilter" class="form-select"
+                        asp-items="@(new SelectList(ViewBag.DueFilters, "Key", "Value", ViewBag.Filters.Due))">
+                    <option value="all">All</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Status</label>
+                <select name="statusFilter" class="form-select"
+                        asp-items="@(new SelectList(ViewBag.Statuses, "StatusId", "StatusName", ViewBag.Filters.StatusId))">
+                    <option value="all">All</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">ADD</button>
+            <a asp-action="Index" class="btn btn-secondary">CANCEL</a>
+        </form>
+    </div>
+</div>
+
+
+
